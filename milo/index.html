@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script> 
+    <title>Milo <3</title>
+    <style>
+
+        body::before {
+            content: "";
+            background: url('https://media.discordapp.net/attachments/1206386856833318973/1223783942281498645/639521543e2206ba9e451bf421c475fd.gif?ex=661b1c9c&is=6608a79c&hm=4af4e9219ca743c40fef61fc8e0b2ce1eb43ac15d7857488a5d578603b42c107&=&width=449&height=449') center/cover no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.2;
+        }
+
+        #who span {
+            display: inline-block;
+            background: url('../gif/sparkle_white.gif') no-repeat;
+            background-size: cover;
+            padding: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <main>
+        <img src="https://media.discordapp.net/attachments/1206386856833318973/1223786078339862631/9089aab1cd42ba0f8227b8d8d5d99d4d.png?ex=661b1e99&is=6608a999&hm=1e61c5385e8aa368cc9af894b5db6dcb23a1cfe06135e7290f5ea87fa84b6626&=&format=webp&quality=lossless&width=230&height=230" alt="Profile Picture">
+        <span id="who"></span>
+        <span id="pointer">&#9758;</span>
+        <span id="footer"></span>
+        <div class="flexbox">
+            <a href="https://discord.gg/played"><button><i class="icon fa-brands discord"></i>/played</button></a>
+            <a href="https://discord.gg/cybersec"><button><i class="icon fa-brands discord"></i>/CyberSec</button></a>
+            <a href="https://twitter.com/LarpedSkid"><button><i class="icon fa-brands twitter"></i>LarpedSkid</button></a>
+            <a href="https://t.me/NotASkid"><button><i class="icon fa-brands telegram"></i>NotASkid</button></a>
+        </div>
+    </main>
+
+    <audio id="backgroundMusic">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const text = "Milo <3";
+        const whoElement = document.getElementById("who");
+        const footerText = "I Love Skidding";
+        const footerElement = document.getElementById("footer");
+        const pointerElement = document.getElementById("pointer");
+        let index = 0;
+        let typing = true;
+        let musicPlayed = false;
+
+        function createSpans(text, parentElement) {
+            for (let char of text) {
+                const span = document.createElement("span");
+                span.textContent = char;
+                parentElement.appendChild(span);
+            }
+        }
+
+        createSpans(text, whoElement);
+        typeWriter();
+
+        function typeWriter() {
+            if (index < footerText.length && typing) {
+                footerElement.innerHTML += footerText.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100);
+            } else if (typing) {
+                typing = false;
+                pointerElement.style.display = "inline-block";
+            }
+        }
+
+        function playAudio() {
+            if (!musicPlayed) {
+                const audio = document.getElementById("backgroundMusic");
+                audio.play();
+                musicPlayed = true;
+            }
+        }
+        
+        document.addEventListener("click", playAudio);
+    </script>
+</body>
+</html>
