@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/phobe/PhobeStyles.css">
+    <link rel="shortcut icon" href="favicon.gif" type="image/x-icon">
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>  
+    <title>@cellars</title> <!-- Title changed here -->
+    <style>
+
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.2;
+
+        }
+        #who {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.505), 0 0 11px rgba(255, 255, 255, 0.658), 0 0 20px rgba(255, 255, 255, 0.505);
+            font-size: 3em; /* Adjust font size as needed */
+        }
+
+        #who span {
+            display: inline-block;
+            background: url('/Gifs/white.gif') no-repeat;
+            background-size: cover;
+            padding: 4px;
+        }
+
+    </style>
+    <style>
+        #footer {
+            text-shadow: 0 0 3px rgba(255, 255, 255, 0.505), 0 0 11px rgba(255, 255, 255, 0.658), 0 0 20px rgba(255, 255, 255, 0.505);
+            font-size: 2em; /* Adjust font size as needed */
+        }
+    </style>
+</head>
+<body>
+    <main>
+    </style>
+        <img src="https://cdn.discordapp.com/attachments/1229822841612927047/1229825508238295071/a2fb78eaa9c33db2cf095ee827a9d015.png?ex=66311742&is=661ea242&hm=18a25909a8597534acf6275b79ff32cd8c792e5c486117374d3ef68c35d4f0fb&">
+        <span id="who"></span>
+        <span id="footer"></span>
+        <div class="flexbox">
+            <a href="https://www.instagram.com/anz.is.him"><button><i class="icon fa-brands instagram"></i>Instagram</button></a>
+            <a href="https://www.youtube.com/@I7D5"><button><i class="icon fa-brands youtube"></i>Youtube</button></a>
+        </div>
+    </main>
+
+    <!-- Audio element with autoplay and muted attributes -->
+    <audio autoplay>
+        <source src="wtdb.mp3" type="audio/mpeg">
+        <!-- Provide alternate audio formats here if necessary -->
+        Your browser does not support the audio element.
+    </audio>
+
+
+    <script>
+        const text = "@Phobe";
+        const whoElement = document.getElementById("who");
+        const footerText = "innocent until proven guilty";
+        const footerElement = document.getElementById("footer");
+        const pointerElement = document.getElementById("pointer");
+        let index = 0;
+        let typing = true;
+        let musicPlayed = false;
+
+        function createSpans(text, parentElement) {
+            for (let char of text) {
+                const span = document.createElement("span");
+                span.textContent = char;
+                parentElement.appendChild(span);
+            }
+        }
+
+        createSpans(text, whoElement);
+        typeWriter();
+
+        function typeWriter() {
+            if (index < footerText.length && typing) {
+                footerElement.innerHTML += footerText.charAt(index);
+                index++;
+                setTimeout(typeWriter, 150);
+            } else if (typing) {
+                typing = false;
+                pointerElement.style.display = "inline-block";
+            }
+        }
+
+        function playAudio() {
+            if (!musicPlayed) {
+                const audio = document.getElementById("backgroundMusic");
+                audio.play();
+                musicPlayed = true;
+            }
+        }
+        
+        document.addEventListener("click", playAudio);
+    </script>
+
+
+
+
+
+</body>
+</html>
